@@ -1,0 +1,8 @@
+services:
+  my_cv:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "4321:4321"
+    restart: unless-stopped

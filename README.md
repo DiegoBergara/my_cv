@@ -11,6 +11,23 @@ npm run check
 npm run build
 ```
 
+## Levantar con Docker local
+
+### Opción rápida con Docker Compose
+
+```bash
+docker compose up --build
+```
+
+La app quedará disponible en `http://localhost:4321`.
+
+### Opción con Docker CLI
+
+```bash
+docker build -t my-cv .
+docker run --rm -p 4321:4321 my-cv
+```
+
 ## Configuración unificada
 
 Todo el contenido editable del sitio (SEO, idioma ES/EN/ZH, perfil, timeline, proyectos, links y tema) está centralizado en:
