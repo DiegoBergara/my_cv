@@ -1,0 +1,59 @@
+---
+import { siteConfig, supportedLocales, type Locale } from '@/config/site';
+import '@/styles/global.css';
+
+interface Props {
+  locale: Locale;
+  title?: string;
+  description?: string;
+}
+
+const { locale, title = siteConfig.seo.title, description = siteConfig.seo.description } = Astro.props;
+const canonicalPath = locale === 'es' ? '/' : `/${locale}/`;
+const canonicalUrl = new URL(canonicalPath, siteConfig.seo.siteUrl).toString();
+---
+
+<!doctype html>
+<html lang={locale}>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="author" content={siteConfig.seo.author} />
+    <link rel="canonical" href={canonicalUrl} />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalUrl} />
+    <meta property="og:image" content={new URL(siteConfig.seo.ogImage, siteConfig.seo.siteUrl).toString()} />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="theme-color" content="#060714" />
+
+    {supportedLocales.map((loc) => (
+      <link
+        rel="alternate"
+        hreflang={loc}
+        href={new URL(loc === 'es' ? '/' : `/${loc}/`, siteConfig.seo.siteUrl).toString()}
+      />
+    ))}
+    <link rel="alternate" hreflang="x-default" href={siteConfig.seo.siteUrl} />
+
+    <script type="application/ld+json" set:html={JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Person',
+      name: siteConfig.seo.author,
+      url: siteConfig.seo.siteUrl,
+      sameAs: [siteConfig.seo.social.linkedin, siteConfig.seo.social.credly],
+      email: siteConfig.seo.email,
+      jobTitle: 'Senior Full Stack Developer'
+    })} />
+  </head>
+  <body>
+    <slot />
+  </body>
+</html>
