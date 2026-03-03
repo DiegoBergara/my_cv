@@ -1,0 +1,68 @@
+---
+import type { Locale } from '@/config/site';
+import { content } from '@/config/site';
+import MobileMenu from './MobileMenu';
+
+interface Props {
+  locale: Locale;
+}
+
+const { locale } = Astro.props;
+const t = content[locale];
+---
+
+<header
+  id="main-nav"
+  class="fixed top-0 right-0 left-0 z-50 border-b border-white/5 bg-base/80 backdrop-blur-xl transition-colors duration-300"
+>
+  <nav class="mx-auto flex h-16 max-w-6xl items-center justify-between px-4 md:px-6" aria-label="Main">
+    <a
+      href={locale === 'es' ? '/' : `/${locale}/`}
+      class="text-lg font-bold text-white transition-colors hover:text-primary"
+      aria-label="Diego Bergara — Home"
+    >
+      DB<span class="text-primary">.</span>
+    </a>
+
+    <div class="hidden items-center gap-1 md:flex">
+      {t.nav.items.map((item) => (
+        <a
+          href={item.href}
+          class="nav-link rounded-lg px-3 py-2 text-sm text-white/60 transition-colors hover:text-white data-[active]:text-white"
+          data-section={item.href.replace('#', '')}
+        >
+          {item.label}
+        </a>
+      ))}
+      <a
+        href={t.nav.langSwitch.href}
+        class="ml-3 rounded-lg border border-white/15 px-3 py-1.5 text-xs font-medium text-white/60 transition-colors hover:border-white/30 hover:text-white"
+      >
+        {t.nav.langSwitch.label}
+      </a>
+    </div>
+
+    <MobileMenu client:load items={t.nav.items} langSwitch={t.nav.langSwitch} />
+  </nav>
+</header>
+
+<script>
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-link');
+
+  const sectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          navLinks.forEach((link) => {
+            const matches = link.getAttribute('data-section') === entry.target.id;
+            link.toggleAttribute('data-active', matches);
+          });
+        }
+      });
+    },
+    { threshold: 0.2, rootMargin: '-80px 0px -50% 0px' }
+  );
+
+  sections.forEach((s) => sectionObserver.observe(s));
+</script>

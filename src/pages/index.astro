@@ -1,8 +1,26 @@
 ---
-import HomePage from '@/components/HomePage.astro';
 import BaseLayout from '@/layouts/BaseLayout.astro';
+import Navbar from '@/components/Navbar.astro';
+import HeroSection from '@/components/HeroSection.astro';
+import AboutSection from '@/components/AboutSection.astro';
+import SkillsSection from '@/components/SkillsSection.astro';
+import TimelineSection from '@/components/TimelineSection.astro';
+import ProjectsSection from '@/components/ProjectsSection.astro';
+import ContactSection from '@/components/ContactSection.astro';
+import Footer from '@/components/Footer.astro';
+
+const locale = 'es' as const;
 ---
 
-<BaseLayout locale="es">
-  <HomePage locale="es" />
+<BaseLayout locale={locale}>
+  <Navbar locale={locale} />
+  <main id="main-content">
+    <HeroSection locale={locale} />
+    <AboutSection locale={locale} />
+    <SkillsSection locale={locale} />
+    <TimelineSection locale={locale} />
+    <ProjectsSection locale={locale} />
+    <ContactSection locale={locale} />
+  </main>
+  <Footer />
 </BaseLayout>
