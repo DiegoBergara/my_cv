@@ -6,43 +6,78 @@ interface Props {
   speed?: number;
 }
 
-export default function SkillsCarousel({ items, direction = 'left', speed = 30 }: Props) {
-  const trackRef = useRef<HTMLDivElement>(null);
+export default function SkillsCarousel({ items, direction = 'left', speed = 0.5 }: Props) {
+  const scrollRef = useRef<HTMLDivElement>(null);
+  const rafRef = useRef(0);
   const duplicated = [...items, ...items];
 
   useEffect(() => {
-    const el = trackRef.current;
+    const el = scrollRef.current;
     if (!el) return;
 
-    const pause = () => {
-      el.style.animationPlayState = 'paused';
-    };
-    const resume = () => {
-      el.style.animationPlayState = 'running';
+    if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+    let paused = false;
+    let resumeTimer: ReturnType<typeof setTimeout>;
+    const dir = direction === 'right' ? -1 : 1;
+
+    if (direction === 'right') {
+      el.scrollLeft = el.scrollWidth / 2;
+    }
+
+    const animate = () => {
+      if (!paused && el) {
+        el.scrollLeft += speed * dir;
+        const half = el.scrollWidth / 2;
+        if (dir > 0 && el.scrollLeft >= half) el.scrollLeft -= half;
+        if (dir < 0 && el.scrollLeft <= 0) el.scrollLeft += half;
+      }
+      rafRef.current = requestAnimationFrame(animate);
     };
 
-    el.addEventListener('touchstart', pause, { passive: true });
-    el.addEventListener('touchend', resume, { passive: true });
-    return () => {
-      el.removeEventListener('touchstart', pause);
-      el.removeEventListener('touchend', resume);
+    rafRef.current = requestAnimationFrame(animate);
+
+    const pause = () => {
+      paused = true;
+      clearTimeout(resumeTimer);
     };
-  }, []);
+    const resumeDelayed = () => {
+      clearTimeout(resumeTimer);
+      resumeTimer = setTimeout(() => {
+        paused = false;
+      }, 2000);
+    };
+
+    el.addEventListener('mouseenter', pause);
+    el.addEventListener('mouseleave', () => {
+      paused = false;
+    });
+    el.addEventListener('touchstart', pause, { passive: true });
+    el.addEventListener('touchend', resumeDelayed, { passive: true });
+    el.addEventListener('focus', pause, true);
+    el.addEventListener('blur', resumeDelayed, true);
+
+    return () => {
+      cancelAnimationFrame(rafRef.current);
+      clearTimeout(resumeTimer);
+      el.removeEventListener('mouseenter', pause);
+      el.removeEventListener('touchstart', pause);
+      el.removeEventListener('focus', pause, true);
+      el.removeEventListener('blur', resumeDelayed, true);
+    };
+  }, [direction, speed]);
 
   return (
-    <div className="relative overflow-hidden" role="region" aria-label="Skills">
+    <div className="relative">
       <div className="pointer-events-none absolute inset-y-0 left-0 z-10 w-12 bg-gradient-to-r from-base to-transparent" />
       <div className="pointer-events-none absolute inset-y-0 right-0 z-10 w-12 bg-gradient-to-l from-base to-transparent" />
 
       <div
-        ref={trackRef}
-        className="marquee-track flex w-max gap-3"
-        style={
-          {
-            '--marquee-duration': `${speed}s`,
-            animationDirection: direction === 'right' ? 'reverse' : 'normal',
-          } as React.CSSProperties
-        }
+        ref={scrollRef}
+        className="scrollbar-hide flex gap-3 overflow-x-auto"
+        role="region"
+        aria-label="Skills"
+        tabIndex={0}
       >
         {duplicated.map((item, i) => (
           <span

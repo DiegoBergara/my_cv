@@ -59,23 +59,37 @@ body {
   }
 }
 
-@keyframes marquee {
-  from { transform: translateX(0); }
-  to { transform: translateX(-50%); }
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
 }
 
-.marquee-track {
-  animation: marquee var(--marquee-duration, 30s) linear infinite;
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
 }
 
-.marquee-track:hover,
-.marquee-track:focus-within {
-  animation-play-state: paused;
+/* CTA outline: borde visible, hover text-primary y borde primary */
+.btn-outline-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: 0.75rem;
+  border: 2px solid rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.05);
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  padding: 0.75rem 1.5rem;
+  min-width: 10rem;
+  transition: all 0.2s;
 }
-
-@media (prefers-reduced-motion: reduce) {
-  .marquee-track {
-    animation: none;
-    flex-wrap: wrap;
-  }
+.btn-outline-cta:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: color-mix(in srgb, var(--color-primary) 70%, transparent);
+  color: var(--color-primary);
+}
+.btn-outline-cta:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 2px;
 }

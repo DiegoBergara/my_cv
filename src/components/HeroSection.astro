@@ -3,7 +3,6 @@ import type { Locale } from '@/config/site';
 import { content } from '@/config/site';
 import HeroBackground from './HeroBackground';
 import AnimatedText from './AnimatedText';
-import { Button } from './ui/button';
 
 interface Props {
   locale: Locale;
@@ -38,16 +37,17 @@ const t = content[locale].hero;
     </p>
 
     <div class="reveal reveal-d2 flex flex-col items-center justify-center gap-4 sm:flex-row">
-      <Button asChild size="lg">
-        <a href={t.primaryCta.href} target="_blank" rel="noopener noreferrer">
-          {t.primaryCta.label}
-        </a>
-      </Button>
-      <Button asChild variant="outline" size="lg">
-        <a href={t.secondaryCta.href}>
-          {t.secondaryCta.label}
-        </a>
-      </Button>
+      <a
+        href={t.primaryCta.href}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-outline-cta"
+      >
+        {t.primaryCta.label}
+      </a>
+      <a href={t.secondaryCta.href} class="btn-outline-cta">
+        {t.secondaryCta.label}
+      </a>
     </div>
   </div>
 </section>

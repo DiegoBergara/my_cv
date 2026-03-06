@@ -78,9 +78,9 @@ export const content: Record<Locale, LocaleContent> = {
     },
     hero: {
       badge: 'Disponible para nuevos desafíos',
-      title: 'Construyo soluciones complejas con ingeniería + AI para impacto real',
+      title: 'Ing. Diego Bergara',
       subtitle:
-        'Ingeniero en Informática y Full Stack Developer Senior. Diseño y ejecuto productos y plataformas robustas que conectan negocio, desarrollo y operación.',
+        'Construyo soluciones complejas con ingeniería + AI para impacto real. Ingeniero en Informática y Full Stack Developer Senior — diseño y ejecuto productos y plataformas robustas que conectan negocio, desarrollo y operación.',
       primaryCta: { label: 'Agendar reunión', href: siteConfig.calendly },
       secondaryCta: { label: 'Contactar por email', href: `mailto:${siteConfig.email}` },
     },
@@ -109,16 +109,46 @@ export const content: Record<Locale, LocaleContent> = {
             'Operación de plataformas de virtualización y contenedores. Automatismos enfocados en gestión de clusters, estandarización de despliegues y observabilidad en entornos enterprise.',
         },
         {
+          period: 'Jun 2025',
+          title: 'Egreso como Software Engineer · UCU',
+          description:
+            'Titulación en Ingeniería en Informática por la Universidad Católica del Uruguay.',
+        },
+        {
           period: 'Sep 2023 — Sep 2025',
-          title: 'Liberaciones CI/CD · Banco de Previsión Social',
+          title: 'Liberaciones CI/CD · BPS',
           description:
             'Automatización de liberaciones, mejora de pipelines CI/CD y reducción de procesos manuales. Mayor autonomía para equipos de desarrollo.',
         },
         {
           period: 'Nov 2022 — Presente',
-          title: 'Senior Full Stack Developer · Ripio',
+          title: 'Sr. Full Stack Developer · Ripio',
           description:
             'Desarrollo de productos críticos para fintech/crypto con foco en performance, estabilidad y aceleración de entrega. Implementación de motor dinámico y microfrontends.',
+        },
+        {
+          period: 'Ene 2021 — Nov 2022',
+          title: 'Ssr. Full Stack Developer · Ripio',
+          description:
+            'Desarrollo full stack en productos fintech. Crecimiento en responsabilidades y entrega de features de alto impacto.',
+        },
+        {
+          period: 'Oct 2020 — Dic 2020',
+          title: 'Jr. Full Stack Developer · Ripio',
+          description:
+            'Primeros pasos en desarrollo profesional. Integración en equipos de producto y stack tecnológico fintech.',
+        },
+        {
+          period: 'Jun 2019 — Sep 2020',
+          title: 'Alutel',
+          description:
+            'Experiencia en telecomunicaciones y tecnología. Alutel — soluciones en Uruguay.',
+        },
+        {
+          period: '2017',
+          title: 'Ingreso a la universidad con beca al buen desempeño concursable · UCU',
+          description:
+            'Inicio de la carrera de Ingeniería en Informática en la UCU con beca al buen desempeño concursable.',
         },
       ],
     },
@@ -185,9 +215,9 @@ export const content: Record<Locale, LocaleContent> = {
     },
     hero: {
       badge: 'Open to new challenges',
-      title: 'I build complex solutions with engineering + AI for real-world impact',
+      title: 'Eng. Diego Bergara',
       subtitle:
-        'Computer Engineer and Senior Full Stack Developer. I design and deliver robust products and platforms that bridge business, software, and operations.',
+        'I build complex solutions with engineering + AI for real-world impact. Computer Engineer and Senior Full Stack Developer — I design and deliver robust products and platforms that bridge business, software, and operations.',
       primaryCta: { label: 'Schedule a meeting', href: siteConfig.calendly },
       secondaryCta: { label: 'Email me', href: `mailto:${siteConfig.email}` },
     },
@@ -216,16 +246,46 @@ export const content: Record<Locale, LocaleContent> = {
             'Platform operations for virtualization and container clusters. Automation focused on cluster management, deployment standardization, and observability in enterprise environments.',
         },
         {
+          period: 'Jun 2025',
+          title: 'Software Engineer degree · UCU',
+          description:
+            'Computer Engineering degree from Universidad Católica del Uruguay.',
+        },
+        {
           period: 'Sep 2023 — Sep 2025',
-          title: 'CI/CD Releases · Banco de Previsión Social',
+          title: 'CI/CD Releases · BPS',
           description:
             'Release automation, CI/CD pipeline improvements, and manual process reduction. Increased autonomy for development teams.',
         },
         {
           period: 'Nov 2022 — Present',
-          title: 'Senior Full Stack Developer · Ripio',
+          title: 'Sr. Full Stack Developer · Ripio',
           description:
             'Building critical fintech/crypto products focused on performance, stability, and faster delivery. Implemented dynamic rendering engine and microfrontends.',
+        },
+        {
+          period: 'Jan 2021 — Nov 2022',
+          title: 'Ssr. Full Stack Developer · Ripio',
+          description:
+            'Full stack development on fintech products. Growth in responsibilities and delivery of high-impact features.',
+        },
+        {
+          period: 'Oct 2020 — Dec 2020',
+          title: 'Jr. Full Stack Developer · Ripio',
+          description:
+            'First steps in professional development. Integration into product teams and fintech tech stack.',
+        },
+        {
+          period: 'Jun 2019 — Sep 2020',
+          title: 'Alutel',
+          description:
+            'Experience in telecommunications and technology. Alutel — solutions in Uruguay.',
+        },
+        {
+          period: '2017',
+          title: 'University enrollment with merit-based scholarship · UCU',
+          description:
+            'Started Computer Engineering at UCU with a merit-based competitive scholarship.',
         },
       ],
     },
