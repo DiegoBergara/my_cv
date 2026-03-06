@@ -1,6 +1,5 @@
 ---
 import BaseLayout from '@/layouts/BaseLayout.astro';
-import Navbar from '@/components/Navbar.astro';
 import HeroSection from '@/components/HeroSection.astro';
 import AboutSection from '@/components/AboutSection.astro';
 import SkillsSection from '@/components/SkillsSection.astro';
@@ -13,7 +12,6 @@ const locale = 'es' as const;
 ---
 
 <BaseLayout locale={locale}>
-  <Navbar locale={locale} />
   <main id="main-content">
     <HeroSection locale={locale} />
     <AboutSection locale={locale} />
