@@ -23,7 +23,7 @@ const categoryKeys = ['backend', 'frontend', 'devops'] as const;
             {t.categories[key]}
           </h3>
           <SkillsCarousel
-            client:visible
+            client:load
             items={skills[key]}
             direction={idx % 2 === 0 ? 'left' : 'right'}
             speed={0.4 + idx * 0.1}

@@ -8,7 +8,7 @@ interface Props {
 
 export default function SkillsCarousel({ items, direction = 'left', speed = 0.5 }: Props) {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const rafRef = useRef(0);
+  const intervalRef = useRef<number | null>(null);
   const duplicated = [...items, ...items];
 
   useEffect(() => {
@@ -25,22 +25,29 @@ export default function SkillsCarousel({ items, direction = 'left', speed = 0.5 
       el.scrollLeft = el.scrollWidth / 2;
     }
 
-    const animate = () => {
-      if (!paused && el) {
-        el.scrollLeft += speed * dir;
-        const half = el.scrollWidth / 2;
-        if (dir > 0 && el.scrollLeft >= half) el.scrollLeft -= half;
-        if (dir < 0 && el.scrollLeft <= 0) el.scrollLeft += half;
-      }
-      rafRef.current = requestAnimationFrame(animate);
+    let currentScroll = el.scrollLeft;
+
+    const tick = () => {
+      if (paused) return;
+      currentScroll += speed * dir;
+
+      const half = el.scrollWidth / 2;
+      if (dir > 0 && currentScroll >= half) currentScroll -= half;
+      if (dir < 0 && currentScroll <= 0) currentScroll += half;
+
+      el.scrollLeft = currentScroll;
     };
 
-    rafRef.current = requestAnimationFrame(animate);
+    intervalRef.current = window.setInterval(tick, 16);
 
     const pause = () => {
       paused = true;
       clearTimeout(resumeTimer);
     };
+    const resume = () => {
+      paused = false;
+    };
+
     const resumeDelayed = () => {
       clearTimeout(resumeTimer);
       resumeTimer = setTimeout(() => {
@@ -49,19 +56,19 @@ export default function SkillsCarousel({ items, direction = 'left', speed = 0.5 
     };
 
     el.addEventListener('mouseenter', pause);
-    el.addEventListener('mouseleave', () => {
-      paused = false;
-    });
+    el.addEventListener('mouseleave', resume);
     el.addEventListener('touchstart', pause, { passive: true });
     el.addEventListener('touchend', resumeDelayed, { passive: true });
     el.addEventListener('focus', pause, true);
     el.addEventListener('blur', resumeDelayed, true);
 
     return () => {
-      cancelAnimationFrame(rafRef.current);
+      if (intervalRef.current !== null) window.clearInterval(intervalRef.current);
       clearTimeout(resumeTimer);
       el.removeEventListener('mouseenter', pause);
+      el.removeEventListener('mouseleave', resume);
       el.removeEventListener('touchstart', pause);
+      el.removeEventListener('touchend', resumeDelayed);
       el.removeEventListener('focus', pause, true);
       el.removeEventListener('blur', resumeDelayed, true);
     };
