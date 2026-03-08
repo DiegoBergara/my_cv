@@ -37,6 +37,12 @@ const langHref = locale === 'es' ? `${base}en/` : base;
           {item.label}
         </a>
       ))}
+      <a
+        href={langHref}
+        class="ml-3 rounded-lg border-2 border-white/30 bg-white/5 px-3 py-1.5 text-xs font-semibold text-white/90 transition-all duration-200 hover:border-cyan-400/60 hover:bg-white/15 hover:text-white"
+      >
+        {t.nav.langSwitch.label}
+      </a>
     </div>
 
     <MobileMenu client:load items={t.nav.items} langSwitch={{ label: t.nav.langSwitch.label, href: langHref }} />

@@ -58,6 +58,12 @@ export default function MobileMenu({ items, langSwitch }: Props) {
               {item.label}
             </a>
           ))}
+          <a
+            href={langSwitch.href}
+            className="mt-4 rounded-lg border border-white/15 px-5 py-2.5 text-sm font-medium text-white/60 transition-colors hover:border-white/30 hover:text-white"
+          >
+            {langSwitch.label}
+          </a>
         </div>
       )}
     </div>
