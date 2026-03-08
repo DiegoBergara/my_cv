@@ -217,14 +217,14 @@ export const content: Record<Locale, LocaleContent> = {
       badge: 'Open to new challenges',
       title: 'Eng. Diego Bergara',
       subtitle:
-        'I build complex solutions with engineering + AI for real-world impact. Computer Engineer and Senior Full Stack Developer — I design and deliver robust products and platforms that bridge business, software, and operations.',
+        'I build complex solutions with engineering + AI for real-world impact. Computer Engineer and Senior Full Stack Developer — I design and execute robust products and platforms that connect business, development, and operations.',
       primaryCta: { label: 'Schedule a meeting', href: siteConfig.calendly },
       secondaryCta: { label: 'Email me', href: `mailto:${siteConfig.email}` },
     },
     about: {
       title: 'Professional profile',
       description:
-        'I operate across backend, frontend, and cloud-native operations. My focus is solving high-complexity challenges, automating critical workflows, and improving time-to-market with quality.',
+        'I work across backend, frontend, and cloud-native operations. My focus is solving high-complexity problems, automating critical processes, and improving time-to-market without sacrificing quality.',
       education: 'Computer Engineer · Universidad Católica del Uruguay',
       location: 'Uruguay · Remote-friendly',
     },
@@ -247,7 +247,7 @@ export const content: Record<Locale, LocaleContent> = {
         },
         {
           period: 'Jun 2025',
-          title: 'Software Engineer degree · UCU',
+          title: 'Graduated as Software Engineer · UCU',
           description:
             'Computer Engineering degree from Universidad Católica del Uruguay.',
         },
@@ -273,7 +273,7 @@ export const content: Record<Locale, LocaleContent> = {
           period: 'Oct 2020 — Dec 2020',
           title: 'Jr. Full Stack Developer · Ripio',
           description:
-            'First steps in professional development. Integration into product teams and fintech tech stack.',
+            'First steps in professional software development. Integration into product teams and the fintech technology stack.',
         },
         {
           period: 'Jun 2019 — Sep 2020',
@@ -285,7 +285,7 @@ export const content: Record<Locale, LocaleContent> = {
           period: '2017',
           title: 'University enrollment with merit-based scholarship · UCU',
           description:
-            'Started Computer Engineering at UCU with a merit-based competitive scholarship.',
+            'Started Computer Engineering at UCU with a competitive merit-based scholarship.',
         },
       ],
     },
@@ -295,7 +295,7 @@ export const content: Record<Locale, LocaleContent> = {
         {
           title: 'SGR — Resource Management System',
           description:
-            'Final thesis: comprehensive system for machinery maintenance at CUJO SA. OCR app + geolocation, admin web panel, and OWASP-compliant backend. Grade: 6/6 excellent.',
+            'Final thesis: comprehensive system for machinery maintenance at CUJO SA. OCR + geolocation app, web administration panel, and OWASP-compliant backend. Grade: 6/6 excellent.',
           tags: ['OCR', 'Geolocation', 'React Native', 'Django', 'OWASP'],
           links: [{ label: 'CUJO SA', href: 'https://cujo.com.uy/' }],
         },
@@ -309,7 +309,7 @@ export const content: Record<Locale, LocaleContent> = {
         {
           title: 'ArgoCD Migration · BPS',
           description:
-            'GitOps standardization for OpenShift applications. Eliminated manual processes, enabled automatic deployments, and granted autonomy to development centers.',
+            'GitOps standardization for OpenShift applications. Eliminated manual processes, enabled automatic deployments, and increased autonomy for development centers.',
           tags: ['ArgoCD', 'OpenShift', 'GitOps', 'Automation'],
           links: [],
         },
@@ -329,7 +329,7 @@ export const content: Record<Locale, LocaleContent> = {
     contact: {
       title: "Let's talk",
       subtitle:
-        'Have a project in mind or looking for a senior technical profile? Schedule a meeting or reach out directly.',
+        'Do you have a project in mind or are you looking for a senior technical profile? Schedule a meeting or contact me directly.',
       primaryCta: { label: 'Schedule a meeting', href: siteConfig.calendly },
       secondaryCta: { label: 'Send email', href: `mailto:${siteConfig.email}` },
     },
